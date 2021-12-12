@@ -1,1 +1,126 @@
+import java.util.Scanner;
+
+public class LinkedListDemo {
+
+    public static void reverseLinkedList (NodeLL<Integer> head){
+//        NodeLL<Integer> temp = head;
+
+        if(head == null){
+            return;
+        }
+
+        reverseLinkedList(head.next);
+        System.out.print(head.data + " ");
+    }
+
+    public static NodeLL<Integer> insert (NodeLL<Integer> head, int data , int pos){
+        NodeLL<Integer> newNode = new NodeLL<>(data);
+        if(pos == 0){
+            newNode.next = head;
+            return newNode;
+
+        }
+        int i =0;
+        NodeLL<Integer> temp = head;
+        while(i<pos-1){
+            temp = temp.next;
+            i++;
+        }
+        newNode.next = temp.next;
+        temp.next = newNode;
+
+        return head;
+
+    }
+
+
+    public static NodeLL<Integer> takeInput(){
+
+        NodeLL<Integer> head = null , tail = null;
+
+        Scanner sc = new Scanner(System.in);
+        int data = sc.nextInt();
+
+        while(data != -1){
+            NodeLL<Integer> newNode = new NodeLL<>(data);
+
+            if(head == null){
+                head = newNode;
+                tail = newNode;
+            }else{
+//                NodeLL<Integer> temp = head;
+//                while(temp.next != null){
+//                    temp = temp.next;
+//                }
+//                temp.next = newNode;
+
+                tail.next = newNode;
+                tail = newNode; // tail = tail.next;
+            }
+            data = sc.nextInt();
+        }
+        return head;
+
+
+
+    }
+
+    public static void print(NodeLL<Integer> head){
+
+        NodeLL<Integer> temp = null;
+
+        while(head != null) {
+            System.out.print(head.data + " ");
+            head = head.next;
+        }
+        System.out.println();
+        head = temp;
+//        while(head != null) {
+//            System.out.print(head.data + " ");
+//            head = head.next;
+//        }
+//        ye commented kaam ka nhi h kyunki dusri baari tk head null ho chuka hota h
+        //agar 2 baar print krwana chahte ho to see commented ines with four slashes in this function
+        }
+
+    public static void main(String[] args) {
+
+        NodeLL<Integer> head = takeInput();
+
+//        head = insert(head,80,3);
+
+        print(head);
+
+        reverseLinkedList(head);
+
+
+//        NodeLL<Integer> node1 = new NodeLL<Integer>(10);// yqhan hmne size dena pda bcz of hmne constructor bnaya h
+//        System.out.println(node1.data);
+//        System.out.println(node1.next);
+//
+//        NodeLL<Integer> node2 = new NodeLL<Integer>(20);
+//
+//        // node1 me b data ki jagah 10 aaya or refernce ki jagah null or aise hee node2 me data ki jagah 20 or refernce ki jagah null hee h
+//        // but hum chchte h ki hum inko link krde i.e. inke beech me link bnade to kaise bnega
+//
+//        node1.next = node2;
+////        System.out.println(node2);
+////        System.out.println(node1.next);
+//
+//        NodeLL<Integer> node3 = new NodeLL<Integer>(30);
+//        node2.next = node3;
+//
+//
+//        // to store head node of linked list
+//        NodeLL<Integer> head = node1; // head is just a reference to first node
+//
+//        while(head != null) {
+//            System.out.print(head.data + " ");
+//            head = head.next;
+//        }
+//
+//        print(head);
+
+    }
+}
 

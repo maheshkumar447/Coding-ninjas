@@ -92,6 +92,30 @@ public class TreeUse {
     public static TreeNode<Integer> findNextLargerNode(TreeNode<Integer> root, int n){
 
         // Write your code here
+        
+        if(root == null){
+            return null;
+        }
+        
+        TreeNode<Integer> nextLargerNode = null;
+        if(root.data > n){
+            nextLargerNode = root;
+        }
+        
+        for(TreeNode<Integer> child : root.children){
+            TreeNode<Integer> nextLargerInChild = findNextLargerNode(child,n);
+            if(nextLargerInChild != null){
+                if(nextLargerNode == null || nextLargerNode.data > nextLargerInChild.data){   // || k left wali condition bilkul shuru me true hogi jb  root ka data n se chota hoga or nextLargerNode null hee rhegi update nhi hogi
+                nextLargerNode = nextLargerInChild;
+            }
+        }
+        
+        return nextLargerNode;
+        
+        
+        
+        
+        
 
         if(root==null){
             return null;
